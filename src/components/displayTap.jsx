@@ -13,7 +13,6 @@ function DisplayTap() {
     const userChoice = { grouping: e.target.value };
     setuserGroupingPreference(e.target.value);
     localStorage.setItem("Grouping", JSON.stringify(userChoice));
-    TogglePriorityTab(e.target.value);
   };
 
   const HandleOrderingChange = (e) => {
@@ -38,27 +37,6 @@ function DisplayTap() {
     title: "Ordering",
     option: [{ optionItem: "Title" }, { optionItem: "Priority" }],
     handleChange: HandleOrderingChange,
-  };
-
-  const TogglePriorityTab = (group) => {
-    let params = orderParams;
-    if(!params) return;
-    const priority = "Priority";
-    if (group == priority) {
-      params.option = params.option.filter(
-        (option) => option.optionItem !== priority
-      );
-      setOrderParams(params);
-    } else {
-      const isItemPresent = params.option.some(
-        (option) => option.optionItem === priority
-      );
-
-      if (!isItemPresent) {
-        params.option.push({ optionItem: priority });
-      }
-      setOrderParams(params);
-    }
   };
 
   const HandleOptionReordering = () => {
@@ -88,7 +66,6 @@ function DisplayTap() {
         orderingParams.option.unshift(removedItem);
       }
     }
-    console.log(selectedGroup);
     setOrderParams(orderingParams);
     setGroupParams(groupingParams);
   };
