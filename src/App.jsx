@@ -5,7 +5,7 @@ import KanBenBoard from "./components/kanbenBoard";
 
 function App() {
   return (
-    <Box className="App bg-light-gray">
+    <Box className="App">
       <DisplayTap />
       <KanBenBoard />
     </Box>
